@@ -1,23 +1,26 @@
 <template>
-<div class="box">
+<div>
 
-    <el-col :span="20">
+    <div class="item">
 
-    </el-col>
+ 我是详情页
+
+    </div>
 
 </div>
 </template>
 
 <script>
 export default {
-    name: "mainContent"
+    name: "detailForm"
 }
 </script>
 
 <style scoped>
-.el-col{
+.item{
+    width: 1232px;
     height: 550px;
     float: right;
-
+    overflow: auto;
 }
 </style>

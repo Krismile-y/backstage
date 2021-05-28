@@ -17,6 +17,6 @@ export default {
 div{
     width: 100%;
     height: 100px;
-    /*background: orange;*/
+    background: #409EFF;
 }
 </style>

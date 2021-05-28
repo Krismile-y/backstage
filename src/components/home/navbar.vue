@@ -29,19 +29,20 @@
 
 <!--    ------------------------------------------------>
     <div class="drop">
-        <el-dropdown @command="handleCommand">
+        <el-dropdown @command="handleCommand(),signout()">
   <span class="el-dropdown-link">
     登录<i class="el-icon-arrow-down el-icon--right"></i>
   </span>
             <el-dropdown-menu slot="dropdown">
-                <el-dropdown-item command="a" class="el-icon-edit">黄金糕</el-dropdown-item>
+                <el-dropdown-item command="a" @click="signout" >退出</el-dropdown-item>
 
             </el-dropdown-menu>
         </el-dropdown>
     </div>
 <!--    ------------------------------------------------->
+<!--    头像-->
     <div class="avatar">
-        <div class="block"><el-avatar :size="40" :src="circleUrl"></el-avatar></div>
+        <div class="block"><el-avatar :size="40" :src="$store.state.url"></el-avatar></div>
     </div>
 
 </div>
@@ -54,7 +55,7 @@ export default {
         return {
             activeIndex: '1',
             activeIndex2: '1',
-            circleUrl: "https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png",
+            circleUrl: "",
 
         };
     },
@@ -63,9 +64,26 @@ export default {
             console.log(key, keyPath);
         },
         handleCommand(command) {
-            this.$message('click on item ' + command);
+            this.$message('退出账号成功');
+        },
+        signout(){
+            localStorage.removeItem('lastname')
+            this.$store.commit('des','')
+            this.$router.push('/home')
+        },
+
+
+    },
+
+    created() {
+        if(localStorage.getItem('lastname')){
+          this.$store.state.url=localStorage.getItem('user')
         }
-    }
+    },
+
+
+
+
 }
 </script>
 
